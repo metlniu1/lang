@@ -4,7 +4,7 @@ ZZZ="package/lean/default-settings/files/zzz-default-settings"
 #
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
-sed -i "/uci commit network/i\uci set network.lan.ipaddr='10.10.10.251'" $ZZZ               # IPv4 地址(openwrt后台地址)
+sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.2.1'" $ZZZ               # IPv4 地址(openwrt后台地址)
 sed -i "/uci commit network/i\uci set network.lan.netmask='255.255.255.0'" $ZZZ             # IPv4 子网掩码
 sed -i "/uci commit network/i\uci set network.lan.gateway='10.10.10.250'" $ZZZ              # IPv4 网关
 sed -i "/uci commit network/i\uci set network.lan.broadcast='10.10.10.255'" $ZZZ            # IPv4 广播
@@ -14,9 +14,9 @@ echo "close_dhcp" > package/base-files/files/etc/closedhcp                      
 
 sed -i 's/luci-theme-bootstrap/luci-theme-rosy/g' feeds/luci/collections/luci/Makefile      # 强制选择rosy为默认主题选项
 
-sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt'" $ZZZ             # 修改主机名称为OpenWrt
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='OpenWrt-DHL'" $ZZZ             # 修改主机名称为OpenWrt
 
-sed -i "s/OpenWrt /MCydia Compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ       # 增加自己个性名称MCydia
+sed -i "s/OpenWrt /大灰狼 Compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ       # 增加自己个性名称MCydia
 
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                      # 设置密码为空
 
