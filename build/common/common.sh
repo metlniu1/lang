@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/MCydia/OpenWrt
-# common Module by MCydia
+# common Module by DaDuiLang
 # matrix.target=${Modelfile}
 
 DIY_GET_COMMON_SH() {
@@ -12,7 +12,7 @@ IMZZZ="package/emortal/default-settings/files/zzz-default-settings"
 # 全脚本源码通用diy.sh文件
 Diy_all() {
 DIY_GET_COMMON_SH
-echo -e "\nsrc-git MCydia https://github.com/MCydia/openwrt-package;$REPO_BRANCH" >> feeds.conf.default
+echo -e "\nsrc-git shidahuilang https://github.com/shidahuilang/openwrt-package;$REPO_BRANCH" >> feeds.conf.default
 mv "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
 chmod +x package/base-files/files/bin/AutoBuild_Tools.sh
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
