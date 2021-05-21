@@ -118,7 +118,8 @@ sys_tempx=`echo $sys_temp | sed 's/ / /g'`
 
 
 # display info
-
+display "核心温度" "$sys_tempx" "45" "0" "°C"  ""  
+echo ""
 printf "CPU 型号:  \x1B[92m%s\x1B[0m" "$sys_tempx"
 echo ""
 
