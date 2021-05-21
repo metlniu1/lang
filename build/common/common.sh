@@ -62,8 +62,8 @@ Diy_lede2() {
 DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
 cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-mv -f feeds/MCydia/luci-app-oscam feeds/luci/applications
-mv -f feeds/MCydia/oscam feeds/packages/net
+mv -f feeds/shidahuilang/luci-app-oscam feeds/luci/applications
+mv -f feeds/shidahuilang/oscam feeds/packages/net
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 sed -i 's/ +luci-theme-rosy//g' package/feeds/luci/luci/Makefile
 # 修改luci/luci-app-ddns排序
