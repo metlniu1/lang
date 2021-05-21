@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/MCydia/OpenWrt
-# common Module by MCydia
+# common Module by DaDuiLang
 # matrix.target=${Modelfile}
 
 DIY_GET_COMMON_SH() {
@@ -12,7 +12,7 @@ IMZZZ="package/emortal/default-settings/files/zzz-default-settings"
 # 全脚本源码通用diy.sh文件
 Diy_all() {
 DIY_GET_COMMON_SH
-echo -e "\nsrc-git MCydia https://github.com/MCydia/openwrt-package;$REPO_BRANCH" >> feeds.conf.default
+echo -e "\nsrc-git shidahuilang https://github.com/shidahuilang/openwrt-package;$REPO_BRANCH" >> feeds.conf.default
 mv "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
 chmod +x package/base-files/files/bin/AutoBuild_Tools.sh
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
@@ -62,8 +62,8 @@ Diy_lede2() {
 DIY_GET_COMMON_SH
 cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
 cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-mv -f feeds/MCydia/luci-app-oscam feeds/luci/applications
-mv -f feeds/MCydia/oscam feeds/packages/net
+mv -f feeds/shidahuilang/luci-app-oscam feeds/luci/applications
+mv -f feeds/shidahuilang/oscam feeds/packages/net
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 sed -i 's/ +luci-theme-rosy//g' package/feeds/luci/luci/Makefile
 # 修改luci/luci-app-ddns排序
