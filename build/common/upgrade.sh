@@ -1,6 +1,6 @@
 #!/bin/bash
-# https://github.com/MCydia/OpenWrt
-# AutoBuild Module by MCydia
+# https://github.com/shidahuilang/OpenWrt
+# AutoBuild Module by 大灰狼
 # AutoBuild Functions
 
 GET_TARGET_INFO() {
