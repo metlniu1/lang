@@ -39,7 +39,7 @@ jobs:
       matrix:
         target: [Lede_x86_64]
         
-        # [Lede_x86_64,Lienol_x86_64,Project_x86_64]
+        # [Lede_source,Lienol_source,Project_source]
 
     steps:
     - name: 准备结束
