@@ -7,7 +7,6 @@ Version=V5.7
 
 Shell_Helper() {
 cat <<EOF
-
 更新参数:
 		bash /bin/AutoUpdate.sh				[保留配置更新]
 		bash /bin/AutoUpdate.sh	-n			[不保留配置更新]
@@ -27,7 +26,6 @@ exit 1
 }
 List_Info() {
 cat <<EOF
-
 /overlay 可用:		${Overlay_Available}
 /tmp 可用:		${TMP_Available}M
 固件下载位置:		${Download_Path}

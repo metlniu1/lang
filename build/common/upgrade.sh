@@ -1,6 +1,6 @@
 #!/bin/bash
-# https://github.com/Hyy2001X/AutoBuild-Actions
-# AutoBuild Module by Hyy2001
+# https://github.com/MCydia/OpenWrt
+# AutoBuild Module by MCydia
 # AutoBuild Functions
 
 GET_TARGET_INFO() {
