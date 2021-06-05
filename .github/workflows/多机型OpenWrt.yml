@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_x86_64,Lede_redmi_ac2100,Lede_nanopi_r4s,Lede_nanopi_r2s,Lede_opewrt]
+        target: [Lede_source,Lede_redmi_ac2100,Lede_nanopi_r4s,Lede_nanopi_r2s,Lede_opewrt]
         
         # [Lede_source,Lienol_source,Project_source]
 
