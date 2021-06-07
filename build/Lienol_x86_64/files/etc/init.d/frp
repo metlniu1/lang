@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+#Author: monokoo <realstones2012@gmail.com>
+#Thanks to FW867's help
+
+
+START=99
+USE_PROCD=1
+PROG="/frpc_linux_arm64" #根据你自己的frp客户端填写
+
+start_service() {
+    rm -f /frpc_overload*.log* # remove old logt/logp files
+    procd_open_instance
+    procd_set_param command "$PROG"
+    procd_append_param command -f <yl9c4zax12nf0k37>:LuoShanJiCN2-2,lang
+    procd_set_param stdout 1 # forward stdout of the command to logd
+    procd_set_param stderr 1 # same for stder
+    procd_set_param respawn
+    procd_close_instance
+}
