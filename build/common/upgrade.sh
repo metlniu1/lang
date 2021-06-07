@@ -28,7 +28,7 @@ GET_TARGET_INFO() {
 		elif [[ "${TARGET_PROFILE}" == "phicomm-k3" ]]; then
 			Up_Firmware="openwrt-bcm53xx-generic-phicomm-k3-squashfs.trx"
 			Firmware_sfx="trx"
-		elif [[ "${TARGET_PROFILE}" =~ (d-team_newifi-d2|phicomm_k2p|phicomm_k2p-32m) ]]; then
+		elif [[ "${TARGET_PROFILE}" =~ (d-team_newifi-d2|phicomm_k2p|ramips-mt7621-xiaomi_mir3g|xiaomi_mir3g|phicomm_k2p-32m) ]]; then
 			Up_Firmware="openwrt-${TARGET_BOARD}-${TARGET_SUBTARGET}-${TARGET_PROFILE}-squashfs-sysupgrade.bin"
 			Firmware_sfx="bin"
 		else
