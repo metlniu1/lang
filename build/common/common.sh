@@ -1,6 +1,6 @@
 #!/bin/bash
-# https://github.com/MCydia/OpenWrt
-# common Module by MCydia
+# https://github.com/281677160/build-openwrt
+# common Module by 大灰狼
 # matrix.target=${Modelfile}
 
 TIME() {
@@ -36,9 +36,13 @@ echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/luci-app-vssr
-svn co  https://github.com/vernesong/OpenClash/trunk feeds/luci/luci-app-openclash > /dev/null 2>&1
-git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
+
+svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker package/luci-lib-docker
+if [ -e feeds/packages/utils/docker-ce ];then
+  sed -i '/dockerd/d' package/luci-app-dockerman/Makefile
+  sed -i 's/+docker/+docker-ce/g' package/luci-app-dockerman/Makefile
+fi
 
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 }
@@ -53,9 +57,6 @@ find . -name 'luci-app-netdata' -o -name 'luci-theme-argon' | xargs -i rm -rf {}
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-git clone https://github.com/jerrykuku/luci-app-vssr package/luci-app-vssr
-svn co  https://github.com/vernesong/OpenClash/trunk feeds/luci/luci-app-openclash > /dev/null 2>&1
-git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
 
 curl -fsSL https://raw.githubusercontent.com/281677160/AdGuardHome/main/luci-app-adguardhome/root/etc/config/AdGuardHome.yaml > package/diy/luci-app-adguardhome/root/etc/config/AdGuardHome.yaml
 curl -fsSL https://raw.githubusercontent.com/281677160/AdGuardHome/main/luci-app-adguardhome/po/zh-cn/AdGuardHome.po > package/diy/luci-app-adguardhome/po/zh-cn/AdGuardHome.po
