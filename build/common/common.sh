@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/281677160/build-openwrt
-# common Module by 大灰狼
+# common Module by 28677160
 # matrix.target=${Modelfile}
 
 TIME() {
