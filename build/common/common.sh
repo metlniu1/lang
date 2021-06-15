@@ -1,6 +1,6 @@
 #!/bin/bash
-# https://github.com/281677160/build-openwrt
-# common Module by 28677160
+# https://github.com/MCydia/OpenWrt
+# common Module by MCydia
 # matrix.target=${Modelfile}
 
 TIME() {
@@ -21,7 +21,6 @@ TIME() {
       }
 }
 
-
 ################################################################################################################
 # LEDE源码通用diy.sh文件
 ################################################################################################################
@@ -36,10 +35,17 @@ echo -e "\nCONFIG_TARGET_IMAGES_GZIP=y" >> "${PATH1}/${CONFIG_FILE}"
 
 git clone https://github.com/fw876/helloworld package/luci-app-ssr-plus
 git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+git clone https://github.com/garypang13/luci-app-bypass package/luci-app-bypass
+git clone --depth=1 https://github.com/garypang13/smartdns-le package/smartdns-le
+svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
+ git clone --depth=1 https://github.com/lisaac/luci-lib-docker package/luci-lib-docker
+ if [ -e feeds/packages/utils/docker-ce ];then
+   sed -i '/dockerd/d' package/luci-app-dockerman/Makefile
+   sed -i 's/+docker/+docker-ce/g' package/luci-app-dockerman/Makefile
+ fi
 
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 }
-
 
 ################################################################################################################
 # LIENOL源码通用diy.sh文件
@@ -58,7 +64,6 @@ sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += luci-app-passwall/g' target/li
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 }
 
-
 ################################################################################################################
 # 天灵源码18.06分支diy.sh文件
 ################################################################################################################
@@ -71,7 +76,6 @@ sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" ${ZZZ}
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 }
 
-
 ################################################################################################################
 # 天灵源码21.02分支diy.sh文件
 ################################################################################################################
@@ -82,7 +86,6 @@ find . -name 'luci-app-argon-config' -o -name 'luci-theme-argon'  | xargs -i rm 
 sed -i "/exit 0/i\sed -i '/DISTRIB_REVISION/d' /etc/openwrt_release" "${ZZZ}"
 sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2>&1" package/base-files/files/etc/rc.local
 }
-
 
 ################################################################################################################
 # 全部作者源码公共diy.sh文件
@@ -100,7 +103,6 @@ if [[ ${REGULAR_UPDATE} == "true" ]]; then
 fi
 
 }
-
 
 ################################################################################################################
 # 判断脚本是否缺少主要文件（如果缺少settings.ini设置文件在检测脚本设置就运行错误了）
@@ -125,7 +127,6 @@ exit 1
 fi
 rm -rf {build,README.md}
 }
-
 
 ################################################################################################################
 # 判断插件冲突
@@ -201,7 +202,6 @@ else
 fi
 }
 
-
 ################################################################################################################
 # 为编译做最后处理
 ################################################################################################################
@@ -256,7 +256,6 @@ sed -i "s/^/TIME g \"/g" Plug-in
 find . -name 'LICENSE' -o -name 'README' -o -name 'README.md' | xargs -i rm -rf {}
 find . -name 'CONTRIBUTED.md' -o -name 'README_EN.md' -o -name 'DEVICE_NAME' | xargs -i rm -rf {}
 }
-
 
 ################################################################################################################
 # 公告
