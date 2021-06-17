@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_opewrtR3G]
+        target: [Lede_opewrt]
 
         # [Lede_source,Lienol_source,Project_source,Spirit_source]
 
