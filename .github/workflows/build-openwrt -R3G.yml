@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_opewrt]
+        target: [Lede_opewrtR3G]
 
         # [Lede_source,Lienol_source,Project_source,Spirit_source]
 
@@ -82,6 +82,7 @@ jobs:
           echo "CODE=Spirit" >> $GITHUB_ENV
           echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
+
 
     - name: 电报机器人信息通知
       run: |
