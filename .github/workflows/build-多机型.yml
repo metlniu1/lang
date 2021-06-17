@@ -5,7 +5,7 @@
 # Copyright (C) 2019 P3TERX <https://p3terx.com>
 # <https://github.com/P3TERX/Actions-OpenWrt.git>
 #
-name: 编译多机型固件
+name: 编译OpenWrt多机型固件
 on:
   workflow_dispatch:
     inputs:
@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lede_source,Lede_nanopi_r2s,Lede_nanopi_r4s,Lede_opewrtR3G,Lede_redmi_ac2100]
+        target: [Lede_source,Lede_nanopi_r4s,Lede_nanopi_r2s,Lede_opewrtR3G]
 
         # [Lede_source,Lienol_source,Project_source,Spirit_source]
 
@@ -58,6 +58,7 @@ jobs:
         echo "UPLOAD_RELEASE=${UPLOAD_RELEASE}" >> $GITHUB_ENV
         echo "SERVERCHAN_SCKEY=${SERVERCHAN_SCKEY}" >> $GITHUB_ENV
         echo "REGULAR_UPDATE=${REGULAR_UPDATE}" >> $GITHUB_ENV
+        echo "BY_INFORMATION=${BY_INFORMATION}" >> $GITHUB_ENV
         echo "CangKu=${Apidz##*/}" >> $GITHUB_ENV
         echo "Modelfile=${{matrix.target}}" >> $GITHUB_ENV
 
@@ -81,6 +82,7 @@ jobs:
           echo "CODE=Spirit" >> $GITHUB_ENV
           echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
+
 
     - name: 电报机器人信息通知
       run: |
@@ -128,18 +130,22 @@ jobs:
           source "${PATH1}/common.sh" && Diy_lede
           cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
           cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
+          cp -Rf "${Home}"/build/common/LEDE/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "19.07" ]]; then
           source "${PATH1}/common.sh" && Diy_lienol
           cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
+          cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "openwrt-18.06" ]]; then
           source "${PATH1}/common.sh" && Diy_1806
           cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
           cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
+          cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
           source "${PATH1}/common.sh" && Diy_2102
           cp -Rf "${Home}"/build/common/SPIRIT/files "${Home}"
           cp -Rf "${Home}"/build/common/SPIRIT/diy/* "${Home}"
+          cp -Rf "${Home}"/build/common/SPIRIT/patches/* "${PATH1}/patches"
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
@@ -191,8 +197,10 @@ jobs:
         if [ "${REGULAR_UPDATE}" == "true" ]; then
           source "${PATH1}/upgrade.sh" && Diy_Part2 > /dev/null 2>&1
         fi
-        source "${PATH1}/upgrade.sh" > /dev/null 2>&1
-        source "${PATH1}/common.sh" && Diy_xinxi
+        if [ "${BY_INFORMATION}" == "true" ]; then
+          source "${PATH1}/upgrade.sh" > /dev/null 2>&1
+          source "${PATH1}/common.sh" && Diy_xinxi
+        fi
 
     - name: 下载软件包
       id: package
