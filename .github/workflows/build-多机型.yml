@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Lienol_nanopi_r4s,Lienol_nanopi_r2s]
+        target: [Lienol_opewrt]
 
         # [Lede_source,Lienol_source,Project_source,Spirit_source]
 
