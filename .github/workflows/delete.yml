@@ -45,10 +45,10 @@ env:
           keep_minimum_runs: 0
     
     #  - name: 删除自动发布的老固件
-        uses: dev-drprasad/delete-older-releases@master
-        if: env.OLDER_RELEASES == 'true' || (github.event.inputs.delete-older-releases == 'true')
-        with:
-          keep_latest: 5         #保留多少个发布不删除
-          delete_tags: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        #uses: dev-drprasad/delete-older-releases@master
+        #if: env.OLDER_RELEASES == 'true' || (github.event.inputs.delete-older-releases == 'true')
+        #with:
+          #keep_latest: 5         #保留多少个发布不删除
+          #delete_tags: true
+        #env:
+          #GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
