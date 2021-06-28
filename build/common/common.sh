@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/MCydia/OpenWrt
-# common Module by MCydia
+# common Module by 大灰狼
 # matrix.target=${Modelfile}
 
 TIME() {
