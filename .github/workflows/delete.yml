@@ -29,13 +29,13 @@ env:
   OLDER_WORKFLOW: true
   OLDER_RELEASES: true
 
-jobs:
-  del_runs:
+#jobs:
+  #del_runs:
     runs-on: Ubuntu-20.04
     name: delete-workflow-runs
     steps:
     
-      - name: 删除在github空间的老固件
+      #- name: 删除在github空间的老固件
         uses: Mattraks/delete-workflow-runs@main
         if: env.OLDER_WORKFLOW == 'true' || (github.event.inputs.delete-older-workflow == 'true')
         with:
@@ -44,7 +44,7 @@ jobs:
           retain_days: 0.5
           keep_minimum_runs: 0
     
-      - name: 删除自动发布的老固件
+    #  - name: 删除自动发布的老固件
         uses: dev-drprasad/delete-older-releases@master
         if: env.OLDER_RELEASES == 'true' || (github.event.inputs.delete-older-releases == 'true')
         with:
