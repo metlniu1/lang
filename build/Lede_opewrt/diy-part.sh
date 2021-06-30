@@ -11,7 +11,7 @@ sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.2.1'" $ZZZ   
 sed -i "/uci commit network/i\uci set network.lan.broadcast='192.168.2.255'" $ZZZ                  # IPv4 广播
 sed -i "/uci commit network/i\uci set network.lan.dns='192.168.2.1'" $ZZZ                          # DNS(多个DNS要用空格分开)
 sed -i "/uci commit network/i\uci set network.lan.delegate='0'" $ZZZ                               # 去掉LAN口使用内置的 IPv6 管理
-echo "close_dhcp" > package/base-files/files/etc/closedhcp                                         # 关闭DHCP服务
+#echo "close_dhcp" > package/base-files/files/etc/closedhcp                                         # 关闭DHCP服务
 
 sed -i 's/luci-theme-bootstrap/luci-theme-infinityfreedom/g' feeds/luci/collections/luci/Makefile            # 选择argon为默认主题
 
