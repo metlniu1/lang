@@ -5,7 +5,7 @@
 #
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.110/g' package/base-files/files/bin/config_generate
 #sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.2.1'" $ZZZ                       # IPv4 地址(openwrt后台地址)
 #sed -i "/uci commit network/i\uci set network.lan.netmask='255.255.255.0'" $ZZZ                    # IPv4 子网掩码
 #sed -i "/uci commit network/i\uci set network.lan.gateway='192.168.2.1'" $ZZZ                      # IPv4 网关
