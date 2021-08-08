@@ -1,5 +1,5 @@
 #!/bin/bash
-# https://github.com/MCydia/OpenWrt
+# https://github.com/shidahuilang/lang
 # common Module by 大灰狼
 # matrix.target=${Modelfile}
 
