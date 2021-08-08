@@ -385,13 +385,30 @@ echo
 TIME z " 系统空间      类型   总数  已用  可用 使用率"
 cd ../ && df -hT $PWD && cd openwrt
 echo
+echo
+TIME z "  本服务器的CPU型号为[ ${CPUNAME} ]"
+echo
+TIME z "  在此系统上使用核心数为[ ${CPUCORES} ],线程数为[ $(nproc) ]"
+echo
+
+echo
+TIME z "  下面将使用[ $(nproc)线程 ]编译固件"
+if [ -n "$(ls -A "${Home}/EXT4" 2>/dev/null)" ]; then
+	echo
+	echo
+	chmod -R +x ${Home}/EXT4
+	source ${Home}/EXT4
+	rm -rf EXT4
+fi
 if [ -n "$(ls -A "${Home}/Chajianlibiao" 2>/dev/null)" ]; then
+	echo
 	echo
 	chmod -R +x ${Home}/CHONGTU
 	source ${Home}/CHONGTU
 	rm -rf {CHONGTU,Chajianlibiao}
 fi
 if [ -n "$(ls -A "${Home}/Plug-in" 2>/dev/null)" ]; then
+	echo
 	echo
 	TIME r "	      已选插件列表"
 	chmod -R +x ${Home}/Plug-in
@@ -400,3 +417,4 @@ if [ -n "$(ls -A "${Home}/Plug-in" 2>/dev/null)" ]; then
 	echo
 fi
 }
+
