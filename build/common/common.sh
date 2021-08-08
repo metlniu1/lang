@@ -92,13 +92,13 @@ sed -i "/exit 0/i\chmod +x /etc/webweb.sh && source /etc/webweb.sh > /dev/null 2
 ################################################################################################################
 Diy_all() {
 
-git clone --depth 1 -b "${REPO_BRANCH}" https://github.com/281677160/openwrt-package
+git clone --depth 1 -b "${REPO_BRANCH}" https://github.com/shidahuilang/openwrt-package
 cp -Rf openwrt-package/* "${Home}" && rm -rf "${Home}"/openwrt-package
 
 cp -Rf "${PATH1}"/AutoBuild_Tools.sh package/base-files/files/bin
 
 if [[ ${REGULAR_UPDATE} == "true" ]]; then
-	git clone https://github.com/281677160/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
+	git clone https://github.com/shidahuilang/luci-app-autoupdate feeds/luci/applications/luci-app-autoupdate
 	cp -Rf "${PATH1}"/AutoUpdate.sh package/base-files/files/bin
 fi
 
